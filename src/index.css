@@ -12,8 +12,8 @@ code {
     monospace;
 }
 
-.wrapper {
-  padding-top: 5rem;
-  margin: 0 auto;
-  width: 600px;
+
+.image-icon {
+  width: 200px;
+  height: 200px;
 }

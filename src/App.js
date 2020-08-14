@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Container, Image } from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
   const [currentWeather, setSurrentWeather] = useState(null)
 
+  // application uses the user’s location to fetch the current weather
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition
@@ -27,8 +30,12 @@ function App() {
   console.log('currentWeather: ', currentWeather)
 
   return (
-    <div className="wrapper">
-    </div>
+    <Container fluid className="justify-content-center align-items-center d-flex vh-100 vw-100">
+      {currentWeather && <Image
+        className="image-icon"
+        src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} rounded
+      />}
+    </Container>
   );
 }
 
