@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import './Search.css'
 import { BASEURL } from '../../utils/constants'
 import fetchWeather from '../../utils/fetchWeather'
+import { Form, Button } from 'react-bootstrap'
 
 function Search({ currentWeather, setSurrentWeather }) {
   const [search, setSearch] = useState('')
@@ -24,10 +25,9 @@ function Search({ currentWeather, setSurrentWeather }) {
   }
 
   return (
-    <form onSubmit={submitHandler} className="body">
-
-      <div className="form-group">
-        <input
+    <Form onSubmit={submitHandler} className="body">
+      <Form.Group className="form-group">
+        <Form.Control
           type="text"
           className="form-control"
           id="q"
@@ -35,9 +35,9 @@ function Search({ currentWeather, setSurrentWeather }) {
           value={search}
           onChange={changeInputHandler}
         />
-      </div>
-      <button className="btn btn-color" type="submit"><i className="fa fa-question-circle"></i>&nbsp;Поиск</button>
-    </form>
+      </Form.Group>
+      <Button className="btn btn-color" type="submit"><i className="fa fa-question-circle"></i>&nbsp;Поиск</Button>
+    </Form>
 
   )
 }
