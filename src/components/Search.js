@@ -1,23 +1,33 @@
 import React, { useState } from 'react'
 import './Search.css'
+import { APIKEY, BASEURL } from '../utils/constants'
 
-
-
-
-function Search() {
-
+function Search({ currentWeather, setSurrentWeather }) {
   const [search, setSearch] = useState('')
 
   const submitHandler = event => {
     event.preventDefault()
+    const сity = search.trim()
+    if (сity) {
+      const api = `${BASEURL}?q=${сity}&units=metric&APPID=${APIKEY}&lang=ru`
 
-    const { title } = search
+      fetch(api)
+        .then(response => response.json())
+        .then(data => {
+          if (data.cod === 200) {
+            setSurrentWeather(data)
+          } else {
+            alert('No weather information for your city')
+          }
+          setSearch('')
+        }).catch(e => {
+          alert('No weather information for your city')
+        })
 
-    if (!title.trim()) {
-      return this.props.showAlert('Название поста не может быть пустым')
+    } else {
+      alert('Search field must not be empty')
     }
   }
-
 
   const changeInputHandler = event => {
     event.persist()

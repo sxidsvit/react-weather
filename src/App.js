@@ -3,6 +3,7 @@ import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { bgcolor } from './utils/bgcolor'
 import Search from './components/Search';
+import { APIKEY, BASEURL } from './utils/constants'
 
 function App() {
 
@@ -14,13 +15,18 @@ function App() {
       navigator.geolocation.getCurrentPosition
         (position => {
           const { latitude: lat, longitude: lon } = position.coords
-          const apiKey = "72224e5b355d67283e0e9084d6bc395d"
-          const api = `http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&APPID=${apiKey}&lang=ru`
+          const api = `${BASEURL}?lat=${lat}&lon=${lon}&units=metric&APPID=${APIKEY}&lang=ru`
 
           fetch(api)
             .then(response => response.json())
             .then(data => {
-              setSurrentWeather(data)
+              if (data.cod === 200) {
+                setSurrentWeather(data)
+              } else {
+                alert('No weather information for your city')
+              }
+            }).catch(e => {
+              alert('No weather information for your city')
             })
         })
 
@@ -29,20 +35,24 @@ function App() {
     }
   }, [])
 
-  console.log('currentWeather: ', currentWeather)
-
-  let currentTemp = currentWeather?.main.temp
+  // Air temperature at a given time
+  let currentTemp = currentWeather?.main?.temp
 
   return (
     <>
-      <Search />
+      <Search
+        currentWeather={currentWeather}
+        setSurrentWeather={setSurrentWeather}
+      />
       <Container fluid
         className="justify-content-center align-items-center d-flex weather vw-100"
         style={{ backgroundColor: bgcolor(currentTemp) }}>
         {currentWeather && <Image
           className="image-icon"
-          src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+          src={`http://openweathermap.org/img/wn/${currentWeather?.weather[0].icon}@2x.png`}
         />}
+        {currentWeather?.name},&nbsp;
+        {currentWeather?.weather[0].description},&nbsp;
         {currentWeather?.main.temp}C
     </Container>
     </>
