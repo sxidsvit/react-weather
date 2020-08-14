@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Search.css'
-import { APIKEY, BASEURL } from '../utils/constants'
-import fetchWeather from '../utils/fetchWeather'
+import { APIKEY, BASEURL } from '../../utils/constants'
+import fetchWeather from '../../utils/fetchWeather'
 
 function Search({ currentWeather, setSurrentWeather }) {
   const [search, setSearch] = useState('')

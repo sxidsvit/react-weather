@@ -20,7 +20,7 @@ code {
 }
 
 .weather {
-  height: calc(100vh - 145px);
+  height: calc(100vh - 85px - 60px);
   color: #c1593f;
   font-weight: 700;
 }
