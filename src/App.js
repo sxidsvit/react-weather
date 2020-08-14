@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Search from './components/Search/Search';
 import SlideRange from './components/SlideRange/SlideRange'
 import { bgcolor } from './utils/bgcolor'
-import { APIKEY, BASEURL } from './utils/constants'
+import { BASEURL } from './utils/constants'
 import fetchWeather from './utils/fetchWeather';
 
 function App() {
@@ -17,8 +17,7 @@ function App() {
       navigator.geolocation.getCurrentPosition
         (position => {
           const { latitude: lat, longitude: lon } = position.coords
-          const api = `${BASEURL}?lat=${lat}&lon=${lon}&units=metric&APPID=${APIKEY}&lang=ru`
-
+          const api = `${BASEURL}&lat=${lat}&lon=${lon}`
           fetchWeather(api, setSurrentWeather)
         })
     } else {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import './Search.css'
-import { APIKEY, BASEURL } from '../../utils/constants'
+import { BASEURL } from '../../utils/constants'
 import fetchWeather from '../../utils/fetchWeather'
 
 function Search({ currentWeather, setSurrentWeather }) {
@@ -10,8 +10,7 @@ function Search({ currentWeather, setSurrentWeather }) {
     event.preventDefault()
     const сity = search.trim()
     if (сity) {
-      const api = `${BASEURL}?q=${сity}&units=metric&APPID=${APIKEY}&lang=ru`
-
+      const api = `${BASEURL}&q=${сity}`
       fetchWeather(api, setSurrentWeather)
       setSearch('')
     } else {
