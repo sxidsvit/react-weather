@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import './Search.css'
 import { APIKEY, BASEURL } from '../utils/constants'
+import fetchWeather from '../utils/fetchWeather'
 
 function Search({ currentWeather, setSurrentWeather }) {
   const [search, setSearch] = useState('')
@@ -11,19 +12,8 @@ function Search({ currentWeather, setSurrentWeather }) {
     if (сity) {
       const api = `${BASEURL}?q=${сity}&units=metric&APPID=${APIKEY}&lang=ru`
 
-      fetch(api)
-        .then(response => response.json())
-        .then(data => {
-          if (data.cod === 200) {
-            setSurrentWeather(data)
-          } else {
-            alert('No weather information for your city')
-          }
-          setSearch('')
-        }).catch(e => {
-          alert('No weather information for your city')
-        })
-
+      fetchWeather(api, setSurrentWeather)
+      setSearch('')
     } else {
       alert('Search field must not be empty')
     }

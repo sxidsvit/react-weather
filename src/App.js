@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { bgcolor } from './utils/bgcolor'
 import Search from './components/Search';
+import { bgcolor } from './utils/bgcolor'
 import { APIKEY, BASEURL } from './utils/constants'
+import fetchWeather from './utils/fetchWeather';
 
 function App() {
 
@@ -17,19 +18,8 @@ function App() {
           const { latitude: lat, longitude: lon } = position.coords
           const api = `${BASEURL}?lat=${lat}&lon=${lon}&units=metric&APPID=${APIKEY}&lang=ru`
 
-          fetch(api)
-            .then(response => response.json())
-            .then(data => {
-              if (data.cod === 200) {
-                setSurrentWeather(data)
-              } else {
-                alert('No weather information for your city')
-              }
-            }).catch(e => {
-              alert('No weather information for your city')
-            })
+          fetchWeather(api, setSurrentWeather)
         })
-
     } else {
       alert("Geolocation is not supported by this browser")
     }
