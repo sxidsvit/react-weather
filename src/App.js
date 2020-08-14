@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Search from './components/Search';
+import Search from './components/Search/Search';
+import SlideRange from './components/SlideRange/SlideRange'
 import { bgcolor } from './utils/bgcolor'
 import { APIKEY, BASEURL } from './utils/constants'
 import fetchWeather from './utils/fetchWeather';
@@ -35,16 +36,25 @@ function App() {
         setSurrentWeather={setSurrentWeather}
       />
       <Container fluid
-        className="justify-content-center align-items-center d-flex weather vw-100"
+        className="d-flex justify-content-center align-items-center vw-100 weather"
         style={{ backgroundColor: bgcolor(currentTemp) }}>
-        {currentWeather && <Image
-          className="image-icon"
-          src={`http://openweathermap.org/img/wn/${currentWeather?.weather[0].icon}@2x.png`}
-        />}
+        {currentWeather &&
+          <Image
+            className="image-icon"
+            src={`http://openweathermap.org/img/wn/${currentWeather?.weather[0].icon}@2x.png`}
+          />
+        }
         {currentWeather?.name},&nbsp;
         {currentWeather?.weather[0].description},&nbsp;
-        {currentWeather?.main.temp}C
+        {Math.round(currentWeather?.main.temp * 10) / 10}C
     </Container>
+      <SlideRange
+        style={{
+          backgroundColor: bgcolor(currentTemp)
+        }}
+        currentWeather={currentWeather}
+        setSurrentWeather={setSurrentWeather}
+      />
     </>
   );
 }
