@@ -18,3 +18,9 @@ code {
   height: 200px;
 
 }
+
+.weather {
+  height: calc(100vh - 145px);
+  color: #c1593f;
+  font-weight: 700;
+}

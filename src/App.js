@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { bgcolor } from './utils/bgcolor'
+import Search from './components/Search';
 
 function App() {
 
@@ -33,15 +34,18 @@ function App() {
   let currentTemp = currentWeather?.main.temp
 
   return (
-    <Container fluid
-      className="justify-content-center align-items-center d-flex vh-100 vw-100"
-      style={{ backgroundColor: bgcolor(currentTemp) }}>
-      {currentWeather && <Image
-        className="image-icon"
-        src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
-      />}
-      {currentWeather?.main.temp}C
+    <>
+      <Search />
+      <Container fluid
+        className="justify-content-center align-items-center d-flex weather vw-100"
+        style={{ backgroundColor: bgcolor(currentTemp) }}>
+        {currentWeather && <Image
+          className="image-icon"
+          src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
+        />}
+        {currentWeather?.main.temp}C
     </Container>
+    </>
   );
 }
 
