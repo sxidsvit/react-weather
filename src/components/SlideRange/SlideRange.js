@@ -15,7 +15,7 @@ function SlideRange({ style, currentWeather, setSurrentWeather }) {
 
   return (
     <div className="slide-range" style={style}>
-      <label className="text-center d-block" htmlFor="customRange">Adjust temperature & background color</label>
+      <label className="text-center d-block" htmlFor="customRange">Отрегулируйте температуру и цвет заднего фона</label>
       <input type="range"
         className="custom-range"
         min="-50"

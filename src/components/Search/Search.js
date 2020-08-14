@@ -37,7 +37,7 @@ function Search({ currentWeather, setSurrentWeather }) {
           onChange={changeInputHandler}
         />
       </div>
-      <button className="btn btn-color" type="submit"><i className="fa fa-question-circle"></i>&nbsp;Search</button>
+      <button className="btn btn-color" type="submit"><i className="fa fa-question-circle"></i>&nbsp;Поиск</button>
     </form>
 
   )
