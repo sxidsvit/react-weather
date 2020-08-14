@@ -1,68 +1,33 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## React SPA: "Weather from www.metaweather.com"
 
-## Available Scripts
+**Description:** Test task from reaktivate.com
 
-In the project directory, you can run:
+**Tasks:** The application should have the following functionality:
 
-### `npm start`
+1. Create-react-application should be used to bootstrap the application
+2. On the first load a user is asked to allow his location to proceed.
+3. If user gives consent to use his location the browser location dialog is shown to let user allow his location.
+4. The application uses the user’s location to fetch the current weather using one of the public apis (you can use https://www.metaweather.com/api/ or similar)
+5. Show the current weather icon in the middle of the screen (centered vertically and horizontally)
+6. Change the page background color dynamically based on the current temperature shown in celsius. 
+   Use the following colors:
+    * #00ffff for -10 degrees and below
+    * #fff700 for +10 degrees
+    * #ff8c00 for +30 degrees and above
+    * Dynamically calculate the color for the temperature in between.
+7. Allow User to search for the City and display weather for this City
+   * (Must have!) Application architecture should imply these use-cases
+   * (Nice to have!) UI like https://openweathermap.org/find?q=London
+8. Add a slider to the bottom of the page to adjust the temperature shown on the screen (the slider should affect the background color as well).
+9. Host the site on heroku, firebase, aws or any other hosting provider of your choice.
+10. Provide a deployment script to deploy the site to the hosting provider of your choice and instructions on how to use it.
+11. Use the React best practices
+12  Use the latest version of the framework
+13. Provide an appropriate .gitignore file
+14. Keep the git commit history clean and tidy. Commits should be logical and apply to the single feature / functionality / integration.
+15. Third-party libraries can be used
+16. Make sure the libraries being used have 0 vulnerabilities
+17. We would like to see demonstrable use of best SOLID practises
+  
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Website](https://aspreactweather.web.app/)
