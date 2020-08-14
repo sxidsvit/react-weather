@@ -16,22 +16,19 @@ const { tmin, tminColor, tmidle, tmidleColor, tmax, tmaxColor } = fixedTemp
 
 export const bgcolor = (tcurrent) => {
 
-  if (tcurrent >= tmidle) {
+  const hexInterpolation = (t, tColor) => {
     const t1 = tmidle
-    const t2 = tmax
+    const t2 = t
     const [h1, saturation, luminosity] = hexToHsl(tmidleColor)
-    const h2 = hexToHsl(tmaxColor)[0]
-    const h = (h1 - h2) / (t1 - t2) * tcurrent + (h2 * t1 - h1 * t2) / (t1 - t2)
-    const hex = hsl(h, saturation, luminosity)
-    return hex
-  } else {
-    const t1 = tmidle
-    const t2 = tmin
-    const [h1, saturation, luminosity] = hexToHsl(tmidleColor)
-    const h2 = hexToHsl(tminColor)[0]
+    const h2 = hexToHsl(tColor)[0]
     const h = (h1 - h2) / (t1 - t2) * tcurrent + (h2 * t1 - h1 * t2) / (t1 - t2)
     const hex = hsl(h, saturation, luminosity)
     return hex
   }
 
+  if (tcurrent >= tmidle) {
+    return hexInterpolation(tmax, tmaxColor)
+  } else {
+    return hexInterpolation(tmin, tminColor)
+  }
 }
