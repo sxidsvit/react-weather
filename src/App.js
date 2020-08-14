@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Container, Image } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { bgcolor } from './utils/bgcolor'
 
 function App() {
 
@@ -29,12 +30,17 @@ function App() {
 
   console.log('currentWeather: ', currentWeather)
 
+  let currentTemp = currentWeather?.main.temp
+
   return (
-    <Container fluid className="justify-content-center align-items-center d-flex vh-100 vw-100">
+    <Container fluid
+      className="justify-content-center align-items-center d-flex vh-100 vw-100"
+      style={{ backgroundColor: bgcolor(currentTemp) }}>
       {currentWeather && <Image
         className="image-icon"
-        src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`} rounded
+        src={`http://openweathermap.org/img/wn/${currentWeather.weather[0].icon}@2x.png`}
       />}
+      {currentWeather?.main.temp}C
     </Container>
   );
 }
